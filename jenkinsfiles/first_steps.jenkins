@@ -13,6 +13,7 @@ pipeline {
     stages {
         stage("First step") {
             steps {
+                sh 'docker run -d -p 8083:8083 --name myapp ubuntu:latest'
                 sh 'docker start myapp'
                 sh 'docker attach myapp'
                 sh 'apt-get update && apt-get install git -y && apt-get install maven -y && apt-get install openjdk-8-jdk -y && apt-get clean'
